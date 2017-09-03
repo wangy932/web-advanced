@@ -13,22 +13,23 @@ html, body {
 	overflow: hidden; 
 }
 
-#date{
+#date, #project {
 	display: block;
-	position: absolute;
-	width: 10%;
+	position: absolute;	
 	height: 60%;
+	overflow: hidden; 
+}
+
+#date{
+	width: 10%;
 	margin: 5% 0;
 	right: 0;
 }
 
 #project {
-	display: block;
-	position: absolute;
 	width: 80%;
-	height: 60%;
 	margin: 5% 10%;
-	overflow: hidden; 
+	left: 0;
 }
 
 #info {
@@ -49,7 +50,7 @@ li {
 
 h1 {
 	position: absolute;
-	top: 0;
+	bottom: 0;
 	font-size: 15px;
 }
 
@@ -59,13 +60,13 @@ h2 {
 	font-size: 50px;
 }
 
-#name, #board {
+#dueday, #name, #board {
 	display: block;
 	position: absolute;
 	width: 100%;
 }
 
-#name {
+#dueday, #name {
 	z-index: 2;
 }
 
