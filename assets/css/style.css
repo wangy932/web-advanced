@@ -13,57 +13,39 @@ html, body {
 	overflow: hidden; 
 }
 
-#date, #project {
+section {
 	display: block;
-	position: absolute;	
-	height: 60%;
+	position: absolute;
 	overflow: hidden; 
 }
 
 #date{
 	width: 10%;
+	height: 60%;
 	margin: 5% 0;
 	right: 0;
 }
 
 #project {
-	width: 80%;
-	margin: 5% 10%;
+	width: 70%;
+	height: 60%;
+	margin: 5% 15%;
 	left: 0;
 }
 
 #info {
-	display: none;
+	width: 80%;
+	height: 10%;
+	margin: 5% 10%;
+	top: 80%;
 }
 
 ul {
-	height: 100%;
-	list-style-type: none;
-}
-
-li {
-	position: relative;
-	height: 20%;
-	margin-bottom: 5%;
-	overflow: hidden;
-}
-
-h1 {
-	position: absolute;
-	bottom: 0;
-	font-size: 15px;
-}
-
-h2 {
-	position: absolute;
-	bottom: 0;
-	font-size: 50px;
-}
-
-#dueday, #name, #board {
 	display: block;
 	position: absolute;
 	width: 100%;
+	height: 100%;
+	list-style-type: none;
 }
 
 #dueday, #name {
@@ -72,4 +54,65 @@ h2 {
 
 #board {
 	z-index: 1;
+}
+
+li {
+	position: relative;
+	height: 25%;
+	overflow: hidden;
+}
+
+h1, h2 {
+	position: absolute;
+	font-family: 'Gloria Hallelujah', cursive;
+	font-weight: lighter;
+}
+
+h1 {
+	font-size: 15px;
+}
+
+li h1 {
+	width: 100%;
+	top: 40%;
+	transform: translateY(-40%) rotate(90deg);
+	text-align: center;
+	cursor: pointer;
+	transition: all 0.5s;
+}
+
+li h1:hover {
+	width: 100%;
+	top: 40%;
+	transform: translateY(-40%);
+}
+
+li h1.active {
+	top: 0;
+	transform: rotate(0);
+}
+
+h2 {
+	opacity: 0;
+	bottom: 0;
+	font-size: 50px;
+	color: white;
+	transition: all 0.5s;
+}
+
+div {
+	position: absolute;
+	opacity: 0;
+	width: 100%;
+	height: 5%;
+	top: 40%;
+	left: 0;
+	background-color: lightblue;
+	transition: all 0.5s;
+}
+
+div.active {
+	opacity: 0.3;
+	height: 80%;
+	top: 0;
 }
