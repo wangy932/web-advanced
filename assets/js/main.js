@@ -31,11 +31,11 @@ dueday.addEventListener("click", function(e) {
 		for (var i = 0; i < 4; i ++) {
 			if (e.target.parentNode == dueday.children[i]) {
 				if (!projectBoard.children[i].children[0].classList.contains("active")) {
-					projectName.children[i].children[0].style.opacity = "1";
+					projectName.children[i].children[0].children[0].style.opacity = "1";
 					dueday.children[i].children[0].classList.add("active");
 					projectBoard.children[i].children[0].classList.add("active");
 				} else {
-					projectName.children[i].children[0].style.opacity = "0";
+					projectName.children[i].children[0].children[0].style.opacity = "0";
 					dueday.children[i].children[0].classList.remove("active");
 					projectBoard.children[i].children[0].classList.remove("active");
 				};
@@ -45,13 +45,13 @@ dueday.addEventListener("click", function(e) {
 });
 
 projectName.addEventListener("mouseover", function(e) {
-	if (e.target.parentNode == projectName) {
+	if (e.target.parentNode.parentNode == projectName) {
 		for (var i = 0; i < 4; i ++) {
-			if (e.target == projectName.children[i]) {
+			if (e.target.parentNode == projectName.children[i]) {
 				if (projectBoard.children[i].children[0].classList.contains("active")) {
 					projectBoard.children[i].children[0].style.backgroundColor = "lemonchiffon";
-					projectName.children[i].children[0].style.color = "darkgrey";
-					projectName.children[i].style.cursor = "pointer";
+					projectName.children[i].children[0].children[0].style.color = "darkgrey";
+					projectName.children[i].children[0].style.cursor = "pointer";
 				};
 			};
 		};
@@ -59,13 +59,13 @@ projectName.addEventListener("mouseover", function(e) {
 });
 
 projectName.addEventListener("mouseout", function(e) {
-	if (e.target.parentNode == projectName) {
+	if (e.target.parentNode.parentNode == projectName) {
 		for (var i = 0; i < 4; i ++) {
-			if (e.target == projectName.children[i]) {
+			if (e.target.parentNode == projectName.children[i]) {
 				if (projectBoard.children[i].children[0].classList.contains("active")) {
 					projectBoard.children[i].children[0].style.backgroundColor = "lightblue";
-					projectName.children[i].children[0].style.color = "white";
-					projectName.children[i].style.cursor = "default";
+					projectName.children[i].children[0].children[0].style.color = "white";
+					projectName.children[i].children[0].style.cursor = "default";
 				};
 			};
 		};
