@@ -17,23 +17,36 @@ var img = document.getElementById("img");
 var intro = document.getElementById("intro");
 
 document.addEventListener("mouseover", function() {
+	title.style.opacity = "1";
+	document.body.style.cursor = "default";
 	if (!board.classList.contains("left")) {
 		var i = Math.floor(Math.random()*4);
 		vid.src = vidSrc[i];
 		title.innerHTML = titleTxt[i];
 	};
+	setTimeout(function() {
+		title.style.opacity = "0.1";
+		document.body.style.cursor = "none";
+	}, 3000);
 });
 
 document.addEventListener("click", function() {
+	title.style.opacity = "1";
+	document.body.style.cursor = "default";
 	if (!board.classList.contains("left")) {
 		board.classList.add("left");
 		vid.src = "";
-		title.innerHTML = "Fluxfilm Anthology";
-		img.style.display = "block";
-		intro.style.display = "block";
+		title.innerHTML = "Fluxfilm Anthology<br> - Ben Vautier";
+		img.style.visibility = "visible";
+		intro.style.visibility = "visible";
+		img.style.opacity = "1";
+		intro.style.opacity = "0.8";
+
 	} else {
 		board.classList.remove("left");
-		img.style.display = "none";
-		intro.style.display = "none";
+		img.style.visibility = "hidden";
+		intro.style.visibility = "hidden";
+		img.style.opacity = "0";
+		intro.style.opacity = "0";
 	};
 });
