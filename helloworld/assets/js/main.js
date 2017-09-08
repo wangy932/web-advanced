@@ -15,10 +15,11 @@ var titleTxt = [
 ];
 var img = document.getElementById("img");
 var intro = document.getElementById("intro");
+var background = document.getElementById("background");
 
 document.addEventListener("mouseover", function() {
 	title.style.opacity = "1";
-	document.body.style.cursor = "default";
+	background.style.cursor = "default";
 	if (!board.classList.contains("left")) {
 		var i = Math.floor(Math.random()*4);
 		vid.src = vidSrc[i];
@@ -26,27 +27,22 @@ document.addEventListener("mouseover", function() {
 	};
 	setTimeout(function() {
 		title.style.opacity = "0.1";
-		document.body.style.cursor = "none";
+		background.style.cursor = "none";
 	}, 3000);
 });
 
 document.addEventListener("click", function() {
 	title.style.opacity = "1";
-	document.body.style.cursor = "default";
+	background.style.cursor = "default";
 	if (!board.classList.contains("left")) {
 		board.classList.add("left");
 		vid.src = "";
 		title.innerHTML = "Fluxfilm Anthology<br> - Ben Vautier";
-		img.style.visibility = "visible";
-		intro.style.visibility = "visible";
-		img.style.opacity = "1";
-		intro.style.opacity = "0.8";
-
+		img.classList.add("current");
+		intro.classList.add("current");
 	} else {
 		board.classList.remove("left");
-		img.style.visibility = "hidden";
-		intro.style.visibility = "hidden";
-		img.style.opacity = "0";
-		intro.style.opacity = "0";
+		img.classList.remove("current");
+		intro.classList.remove("current");
 	};
 });
