@@ -75,41 +75,52 @@ function output(num, cattle, gas, earth) {
 		};
 	};
 	var array = output.slice(0, -2).split(", ");
+	
+	var testFunction = function(){
+		for (var x = 0; x < num * num; x++) {
+			array[x]
+		}
+	}
+
+	//console.log(layout, testFunction);
+	//console.log([1,2,3,4,5,6])
+
 	if (num == 3) {
-		console.log(layout, array[0],array[1],array[2],array[3],array[4],array[5],array[6],array[7],array[8]);
+	console.log(layout, array[0],array[1],array[2],array[3],array[4],array[5],array[6],array[7],array[8]);
+
 	} else if (num == 5) {
 		console.log(layout, array[0],array[1],array[2],array[3],array[4],array[5],array[6],array[7],array[8],array[9],array[10],array[11],array[12],array[13],array[14],array[15],array[16],array[17],array[18],array[19],array[20],array[21],array[22],array[23],array[24]);
 	};
 }
 
 function demo(num) {
-	setTimeout(function() {
+	//setTimeout(function() {
 		output(num, emoji.grass, emoji.grass, emoji.earth);
 		console.log("Hmm.. I think I need some meat..");
-	}, 500);
+	//}, 500);
 	
-	setTimeout(function() {
+	//setTimeout(function() {
 		output(num, emoji.cow, false, emoji.earth);
 		console.log("Hooray!! Baby cattles!");
-	}, 3000);
+	//}, 3000);
 	
-	setTimeout(function() {
+	//setTimeout(function() {
 		output(num, emoji.cattle, false, emoji.earth);
 		console.log("Finally, grown-ups!");
-	}, 6000);
+	//}, 6000);
 
-	setTimeout(function() {
+	//setTimeout(function() {
 		output(num, emoji.cattle, emoji.gas, emoji.earth);
 		console.log("Cattle: I'm so sorry, but I've gotta expel this, otherwise I will just explode..");
-	}, 9000);
+	//}, 9000);
 	
-	setTimeout(function() {
+	//setTimeout(function() {
 		output(num, emoji.hamburger, emoji.gas, emoji.earth);
 		console.log("Thank you guys! So yummy! Oh, what about those methane? Hmm.. can we talk about it later?");	
-	}, 14000);
+	//}, 14000);
 	
-	setTimeout(function() {
+	//setTimeout(function() {
 		output(num, false, emoji.gas, emoji.hot);
 		console.log("Well, seems to be a bit stuffy here..");
-	}, 19000);	
+	//}, 19000);	
 };
