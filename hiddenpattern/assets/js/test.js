@@ -13,7 +13,7 @@ var emoji = {
 	
 	popper: "🎉",
 	
-	ph: "⬜️"
+	ph: "  "
 };
 
 var button = document.getElementById("button");
@@ -77,5 +77,5 @@ function demo(num) {
 	output(num, emoji.hot, emoji.fog, emoji.fog);
 }
 
-demo(39);
+demo(25);
 
