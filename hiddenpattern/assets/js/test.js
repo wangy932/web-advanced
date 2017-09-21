@@ -1,19 +1,26 @@
 var emoji = {
-	grass: "background-image: url(\"https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-10/256/seedling.png\"); background-size: cover",
-	cow: "background-image: url(\"http://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-10/256/cow-face.png\"); background-size: cover",
-	celebration: "background-image: url(\"https://www.emojibase.com/resources/img/emojis/apple/x1f389.png.pagespeed.ic.FkjckyE3hU.png\"); background-size: cover",
-	cattle: "background-image: url(\"https://www.magic-emoji.com/emoji/images/505_emoji_iphone_ox.png\"); background-size: cover",
-	gas: "background-image: url(\"https://thoughtcatalog.files.wordpress.com/2014/04/gus.jpg?w=584&h=554\"); background-size: cover",
-	earth: "background-image: url(\"http://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-10/256/globe-showing-americas.png\"); background-size: cover",
-	hamburger: "background-image: url(\"https://emojipedia-us.s3.amazonaws.com/thumbs/120/apple/96/hamburger_1f354.png\"); background-size: cover",
-	smiley: "background-image: url(\"https://pbs.twimg.com/profile_images/541920956449435651/iHq9_qcq.png\"); background-size: cover",
-	hot: "background-image: url(\"https://camo.githubusercontent.com/098f44e74a6c91c3769a4869ad0b3543eb3ee7c1/68747470733a2f2f7777772e656d6f6a69726571756573742e636f6d2f696d616765732f4f766572686561746564456d6f6a692e6a7067\"); background-size: cover"
+	earth: "🌎",
+	hot: "🤒",
+
+	cow: "🐮",
+	ox: "🐂",
+	burger: "🍔",
+	full: "😋", 
+
+	grass: "🌱",
+	gas: "💨",
+	fog: "🌫",
+	
+	popper: "🎉",
+	
+	ph: "⬜️"
 };
+
 var button = document.getElementById("button");
 	slogan = document.getElementById("slogan");
 
 
-function output(num) {
+function output(num, emj1, emj2, emj3) {
 	var output = "";
 
 	for (var row = 0; row < num; row ++) {
@@ -21,42 +28,54 @@ function output(num) {
 			for (var col = 0; col < num; col ++) {
 				if (((num - 1) / 2) % 2) {
 					if (col == (num - 1) / 2) {
-						output = output + "🌏";
+						output = output + emj1;
 					} else if (col % 2) {
-						output = output + "🐂";
+						output = output + emj2;
 					} else {
-						output = output + "💨";
+						output = output + emj3;
 					};
 				} else {
 					if (col == (num - 1) / 2) {
-						output = output + " 🌏";
+						output = output + emj1;
 					} else if (col % 2) {
-						output = output + "💨";
+						output = output + emj3;
 					} else {
-						output = output + "🐂";
+						output = output + emj2;
 					};
 				};
 			};
 		} else if (row % 2) {
 			for (var col = 0; col < num; col ++) {
 				if (col % 2) {
-					output = output + "🐂";
+					output = output + emj2;
 				} else {
-					output = output + "💨";
+					output = output + emj3;
 				};
 			};
 		} else {
 			for (var col = 0; col < num; col ++) {
 				if (col % 2) {
-					output = output + "💨";
+					output = output + emj3;
 				} else {
-					output = output + "🐂";
+					output = output + emj2;
 				};
 			};
 		};
+		output = output + "\n";
 	};
-	
+
 	console.log(output);
 }
 
-output(3);
+function demo(num) {
+	output(num, emoji.earth, emoji.grass, emoji.grass);
+	output(num, emoji.earth, emoji.cow, emoji.grass);
+	output(num, emoji.earth, emoji.ox, emoji.ph);
+	output(num, emoji.earth, emoji.ox, emoji.gas);
+	output(num, emoji.earth, emoji.burger, emoji.gas);
+	output(num, emoji.earth, emoji.ph, emoji.gas);
+	output(num, emoji.hot, emoji.fog, emoji.fog);
+}
+
+demo(39);
+
