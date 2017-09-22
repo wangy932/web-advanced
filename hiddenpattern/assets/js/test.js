@@ -21,7 +21,6 @@ var emoji = {
 };
 
 var button = document.getElementById("button");
-	slogan = document.getElementById("slogan");
 	table = document.getElementById("table");
 	eaterL = document.getElementById("eater_l");
 	eaterR = document.getElementById("eater_r");
@@ -29,66 +28,50 @@ var button = document.getElementById("button");
 button.addEventListener("click", function() {
 	eaterInfo = eaterL.innerText;
 	if (button.innerText == "Ready to order?") {
-		button.innerText = "";
-		orderPlease();
-		demo(5, 2);
-		setTimeout(function() {
-			table.innerText = table.innerText.split("🤷").join("🍴🍴");
-		}, 20000);
-		setTimeout(function() {
-			imFull();
-		}, 25000);
-		setTimeout(function() {
-			table.innerText = "";
-			button.innerText = "More?";
-			eaterL.innerText = eaterInfo;
-			eaterR.innerText = eaterInfo;
-		}, 30000);
+		process(5, 2, "More?");
 	} else if (button.innerText == "More?") {
-		button.innerText = "";
-		orderPlease();
-		demo(11, 6);
-		setTimeout(function() {
-			table.innerText = table.innerText.split("🤷").join("🍴🍴");
-		}, 20000);
-		setTimeout(function() {
-			imFull();
-		}, 25000);
-		setTimeout(function() {
-			table.innerText = "";
-			button.innerText = "Enough?";
-			eaterL.innerText = eaterInfo;
-			eaterR.innerText = eaterInfo;
-		}, 30000);
+		process(11, 6, "Enough?")
 	} else {
-		button.innerText = "";
-		orderPlease();
-		demo(17, 8);
-		setTimeout(function() {
-			table.innerText = table.innerText.split("🤷").join("🍴🍴");
-		}, 20000);
-		setTimeout(function() {
-			imFull();
-		}, 25000);
-		setTimeout(function() {
-			table.innerText = "";
-			button.innerText = "Another round?";
-			eaterL.innerText = eaterInfo;
-			eaterR.innerText = eaterInfo;
-		}, 30000);
+		process(17, 8, "Another round?");
 	};
 });
+
+function process(num, dvd, line) {
+	button.innerText = "";
+	orderPlease();
+	demo(num, dvd);
+	eat();
+	imFull();
+	cleanUp(line);
+}
 
 function orderPlease() {
 	eaterL.innerText = eaterL.innerText.replace("👦", "👋").replace("👧", "👋").replace("👨", "👋").replace("👩", "👋").replace("👴", "👋").replace("👵", "👋");
 	eaterR.innerText = eaterR.innerText.replace("👦", "👋").replace("👧", "👋").replace("👨", "👋").replace("👩", "👋").replace("👴", "👋").replace("👵", "👋");
 };
 
-function imFull() {
-	table.innerText = table.innerText.split("🍔").join("🍽").split("🍴🍴").join("  ");
-	eaterL.innerText = eaterL.innerText.split("👋").join("😋");
-	eaterR.innerText = eaterR.innerText.split("👋").join("😋");
+function eat() {
+	setTimeout(function() {
+		table.innerText = table.innerText.split("🤷").join("🍴🍴");
+	}, 20000);
 };
+
+function imFull() {
+	setTimeout(function() {
+		table.innerText = table.innerText.split("🍔").join("🍽").split("🍴🍴").join("  ");
+		eaterL.innerText = eaterL.innerText.split("👋").join("😋");
+		eaterR.innerText = eaterR.innerText.split("👋").join("😋");
+	}, 25000);	
+};
+
+function cleanUp(line) {
+	setTimeout(function() {
+		table.innerText = "";
+		button.innerText = line;
+		eaterL.innerText = eaterInfo;
+		eaterR.innerText = eaterInfo;
+	}, 30000);
+}
 
 function output(num, emj1, emj2, emj3) {
 	var output = "";
