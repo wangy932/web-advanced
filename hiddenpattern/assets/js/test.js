@@ -33,7 +33,7 @@ button.addEventListener("click", function() {
 		orderPlease();
 		demo(5, 2);
 		setTimeout(function() {
-			table.innerText = table.innerText.split("🤷‍").join("🍴🍴");
+			table.innerText = table.innerText.split("🤷").join("🍴🍴");
 		}, 20000);
 		setTimeout(function() {
 			imFull();
@@ -49,7 +49,7 @@ button.addEventListener("click", function() {
 		orderPlease();
 		demo(11, 6);
 		setTimeout(function() {
-			table.innerText = table.innerText.split("🤷‍").join("🍴🍴");
+			table.innerText = table.innerText.split("🤷").join("🍴🍴");
 		}, 20000);
 		setTimeout(function() {
 			imFull();
@@ -65,7 +65,7 @@ button.addEventListener("click", function() {
 		orderPlease();
 		demo(17, 8);
 		setTimeout(function() {
-			table.innerText = table.innerText.split("🤷‍").join("🍴🍴");
+			table.innerText = table.innerText.split("🤷").join("🍴🍴");
 		}, 20000);
 		setTimeout(function() {
 			imFull();
@@ -163,7 +163,7 @@ function demo(num, dvd) {
 		setTimeout(function() {
 			for (var i = 1; i <= (num*num - 1) / 2; i ++) {
 				if (i % dvd) {
-					table.innerText += emoji.burger + "🤷‍";
+					table.innerText += emoji.burger + "🤷";
 				} else {
 					table.innerText += emoji.burger + "\n";
 				}
