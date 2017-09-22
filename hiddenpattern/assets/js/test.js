@@ -34,48 +34,48 @@ button.addEventListener("click", function() {
 		demo(5, 2);
 		setTimeout(function() {
 			table.innerText = table.innerText.split("🤷‍").join("🍴🍴");
-		}, 1000);
+		}, 20000);
 		setTimeout(function() {
 			imFull();
-		}, 3000);
+		}, 25000);
 		setTimeout(function() {
 			table.innerText = "";
 			button.innerText = "More?";
 			eaterL.innerText = eaterInfo;
 			eaterR.innerText = eaterInfo;
-		}, 5000);
+		}, 30000);
 	} else if (button.innerText == "More?") {
 		button.innerText = "";
 		orderPlease();
 		demo(11, 6);
 		setTimeout(function() {
 			table.innerText = table.innerText.split("🤷‍").join("🍴🍴");
-		}, 1000);
+		}, 20000);
 		setTimeout(function() {
 			imFull();
-		}, 3000);
+		}, 25000);
 		setTimeout(function() {
 			table.innerText = "";
 			button.innerText = "Enough?";
 			eaterL.innerText = eaterInfo;
 			eaterR.innerText = eaterInfo;
-		}, 5000);
+		}, 30000);
 	} else {
 		button.innerText = "";
 		orderPlease();
 		demo(17, 8);
 		setTimeout(function() {
 			table.innerText = table.innerText.split("🤷‍").join("🍴🍴");
-		}, 1000);
+		}, 20000);
 		setTimeout(function() {
 			imFull();
-		}, 3000);
+		}, 25000);
 		setTimeout(function() {
 			table.innerText = "";
 			button.innerText = "Another round?";
 			eaterL.innerText = eaterInfo;
 			eaterR.innerText = eaterInfo;
-		}, 5000);
+		}, 30000);
 	};
 });
 
@@ -138,31 +138,47 @@ function output(num, emj1, emj2, emj3) {
 };
 
 function demo(num, dvd) {
-	output(num, emoji.earth, emoji.grass, emoji.grass);
-	console.log("Hmm.. I think I need some meat..");
-
-	output(num, emoji.flush, emoji.cow, emoji.grass);
-	console.log("Hooray!! Baby cattles!");
-
-	output(num, emoji.shock, emoji.ox, emoji.paw);
-	console.log("Finally, grown-ups!");
-
-	output(num, emoji.fear, emoji.ox, emoji.gas);
-	console.log("Cattle: I'm so sorry, but I've gotta expel this, otherwise I will just explode..");
+	setTimeout(function() {
+		output(num, emoji.earth, emoji.grass, emoji.grass);
+		console.log("Hmm.. I think I need some meat..");
+	}, 500);
 	
-	output(num, emoji.mask, emoji.burger, emoji.gas);
-	for (var i = 1; i <= (num*num - 1) / 2; i ++) {
-		if (i % dvd) {
-			table.innerText += emoji.burger + "🤷‍";
-		} else {
-			table.innerText += emoji.burger + "\n";
-		}
-	}
-	console.log("Beautiful!");
+	setTimeout(function() {
+		output(num, emoji.flush, emoji.cow, emoji.grass);
+		console.log("Hooray!! Baby cattles!");
+	}, 3000);
 	
-	output(num, emoji.sick, emoji.waste, emoji.gas);
-	console.log("Thank you guys! So yummy! Oh, what about those methane? Hmm.. can we talk about it later?");
+	setTimeout(function() {
+		output(num, emoji.shock, emoji.ox, emoji.paw);
+		console.log("Finally, grown-ups!");
+	}, 6000);
 	
-	output(num, emoji.hot, emoji.fog, emoji.fog);
-	console.log("Well, seems to be a bit stuffy here..");
+	setTimeout(function() {
+		output(num, emoji.fear, emoji.ox, emoji.gas);
+		console.log("Cattle: I'm so sorry, but I've gotta expel this, otherwise I will just explode..");
+	}, 9000);
+	
+	setTimeout(function() {
+		output(num, emoji.mask, emoji.burger, emoji.gas);
+		setTimeout(function() {
+			for (var i = 1; i <= (num*num - 1) / 2; i ++) {
+				if (i % dvd) {
+					table.innerText += emoji.burger + "🤷‍";
+				} else {
+					table.innerText += emoji.burger + "\n";
+				}
+			};
+		}, 2000);
+		console.log("Beautiful!");
+	}, 15000);
+	
+	setTimeout(function() {
+		output(num, emoji.sick, emoji.waste, emoji.gas);
+		console.log("Thank you guys! So yummy! Oh, what about those methane? Hmm.. can we talk about it later?");
+	}, 25000);
+	
+	setTimeout(function() {
+		output(num, emoji.hot, emoji.fog, emoji.fog);
+		console.log("Well, seems to be a bit stuffy here..");
+	}, 30000);
 };
