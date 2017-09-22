@@ -1,24 +1,94 @@
 var emoji = {
 	earth: "🌎",
+	flush: "😳",
+	shock: "😯",
+	fear: "😧",
+	mask: "😷",
+	sick: "🤢",
 	hot: "🤒",
 
 	cow: "🐮",
 	ox: "🐂",
 	burger: "🍔",
-	full: "😋", 
+	waste: "🗑",
 
 	grass: "🌱",
+	paw: "🐾",
 	gas: "💨",
 	fog: "🌫",
 	
-	popper: "🎉",
-	
-	ph: "  "
+	popper: "🎉"
 };
 
 var button = document.getElementById("button");
 	slogan = document.getElementById("slogan");
+	table = document.getElementById("table");
+	eaterL = document.getElementById("eater_l");
+	eaterR = document.getElementById("eater_r");
 
+button.addEventListener("click", function() {
+	eaterInfo = eaterL.innerText;
+	if (button.innerText == "Ready to order?") {
+		button.innerText = "";
+		orderPlease();
+		demo(5, 2);
+		setTimeout(function() {
+			table.innerText = table.innerText.split("🤷‍").join("🍴🍴");
+		}, 1000);
+		setTimeout(function() {
+			imFull();
+		}, 3000);
+		setTimeout(function() {
+			table.innerText = "";
+			button.innerText = "More?";
+			eaterL.innerText = eaterInfo;
+			eaterR.innerText = eaterInfo;
+		}, 5000);
+	} else if (button.innerText == "More?") {
+		button.innerText = "";
+		orderPlease();
+		demo(11, 6);
+		setTimeout(function() {
+			table.innerText = table.innerText.split("🤷‍").join("🍴🍴");
+		}, 1000);
+		setTimeout(function() {
+			imFull();
+		}, 3000);
+		setTimeout(function() {
+			table.innerText = "";
+			button.innerText = "Enough?";
+			eaterL.innerText = eaterInfo;
+			eaterR.innerText = eaterInfo;
+		}, 5000);
+	} else {
+		button.innerText = "";
+		orderPlease();
+		demo(17, 8);
+		setTimeout(function() {
+			table.innerText = table.innerText.split("🤷‍").join("🍴🍴");
+		}, 1000);
+		setTimeout(function() {
+			imFull();
+		}, 3000);
+		setTimeout(function() {
+			table.innerText = "";
+			button.innerText = "Another round?";
+			eaterL.innerText = eaterInfo;
+			eaterR.innerText = eaterInfo;
+		}, 5000);
+	};
+});
+
+function orderPlease() {
+	eaterL.innerText = eaterL.innerText.replace("👦", "👋").replace("👧", "👋").replace("👨", "👋").replace("👩", "👋").replace("👴", "👋").replace("👵", "👋");
+	eaterR.innerText = eaterR.innerText.replace("👦", "👋").replace("👧", "👋").replace("👨", "👋").replace("👩", "👋").replace("👴", "👋").replace("👵", "👋");
+};
+
+function imFull() {
+	table.innerText = table.innerText.split("🍔").join("🍽").split("🍴🍴").join("  ");
+	eaterL.innerText = eaterL.innerText.split("👋").join("😋");
+	eaterR.innerText = eaterR.innerText.split("👋").join("😋");
+};
 
 function output(num, emj1, emj2, emj3) {
 	var output = "";
@@ -65,17 +135,34 @@ function output(num, emj1, emj2, emj3) {
 	};
 
 	console.log(output);
-}
+};
 
-function demo(num) {
+function demo(num, dvd) {
 	output(num, emoji.earth, emoji.grass, emoji.grass);
-	output(num, emoji.earth, emoji.cow, emoji.grass);
-	output(num, emoji.earth, emoji.ox, emoji.ph);
-	output(num, emoji.earth, emoji.ox, emoji.gas);
-	output(num, emoji.earth, emoji.burger, emoji.gas);
-	output(num, emoji.earth, emoji.ph, emoji.gas);
+	console.log("Hmm.. I think I need some meat..");
+
+	output(num, emoji.flush, emoji.cow, emoji.grass);
+	console.log("Hooray!! Baby cattles!");
+
+	output(num, emoji.shock, emoji.ox, emoji.paw);
+	console.log("Finally, grown-ups!");
+
+	output(num, emoji.fear, emoji.ox, emoji.gas);
+	console.log("Cattle: I'm so sorry, but I've gotta expel this, otherwise I will just explode..");
+	
+	output(num, emoji.mask, emoji.burger, emoji.gas);
+	for (var i = 1; i <= (num*num - 1) / 2; i ++) {
+		if (i % dvd) {
+			table.innerText += emoji.burger + "🤷‍";
+		} else {
+			table.innerText += emoji.burger + "\n";
+		}
+	}
+	console.log("Beautiful!");
+	
+	output(num, emoji.sick, emoji.waste, emoji.gas);
+	console.log("Thank you guys! So yummy! Oh, what about those methane? Hmm.. can we talk about it later?");
+	
 	output(num, emoji.hot, emoji.fog, emoji.fog);
-}
-
-demo(25);
-
+	console.log("Well, seems to be a bit stuffy here..");
+};
