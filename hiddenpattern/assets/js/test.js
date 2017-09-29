@@ -67,7 +67,7 @@ indicator.addEventListener("click", function() {
 			demoSalad(31);
 		} else if (thermometer.style.filter == "saturate(300%)") {
 			demoPoultry(31);
-		} else if (thermometer.style.filter == "saturate(700%)") {
+		} else if (thermometer.style.filter == "saturate(1000%)") {
 			demoBeef(31);
 		};
 	};
