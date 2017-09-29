@@ -1,77 +1,129 @@
-var emoji = {
-	earth: "🌎",
-	flush: "😳",
-	shock: "😯",
-	fear: "😧",
-	mask: "😷",
-	sick: "🤢",
-	hot: "🤒",
+var food = document.getElementById("food");
+	indicator = document.getElementById("indicator");
+	thermometer = document.getElementById("thermometer");
+	eater = document.getElementsByClassName("eater");
+	original = [];
+	for (var i = 0; i < eater.length; i ++) {
+		original[i] = eater[i].innerText;	
+	};
 
-	cow: "🐮",
-	ox: "🐂",
-	burger: "🍔",
-	waste: "🗑",
-
-	grass: "🌱",
-	paw: "🐾",
-	gas: "💨",
-	fog: "🌫",
-	
-	popper: "🎉"
-};
-
-var button = document.getElementById("button");
-	table = document.getElementById("table");
-	eaterL = document.getElementById("eater_l");
-	eaterR = document.getElementById("eater_r");
-
-button.addEventListener("click", function() {
-	eaterInfo = eaterL.innerText;
-	if (button.innerText == "Ready to order?") {
-		process(5, 2, "More?");
-	} else if (button.innerText == "More?") {
-		process(11, 6, "Enough?")
-	} else {
-		process(17, 8, "Another round?");
+food.addEventListener("mouseover", function(e) {
+	if (e.target.classList.contains("option")) {
+		indicator.style.opacity = "1";
+		if (e.target == food.children[0]) {
+			indicator.innerText = "Salad";
+		} else if (e.target == food.children[1]) {
+			indicator.innerText = "Poultry";
+		} else if (e.target == food.children[2]) {
+			indicator.innerText = "Beef";
+		};
 	};
 });
 
-function process(num, dvd, line) {
-	button.innerText = "";
-	orderPlease();
-	demo(num, dvd);
-	eat();
-	imFull();
-	cleanUp(line);
-}
+food.addEventListener("mouseout", function(e) {
+	if (e.target.classList.contains("option")) {
+		indicator.style.opacity = "0";
+	};
+});
 
-function orderPlease() {
-	eaterL.innerText = eaterL.innerText.replace("👦", "👋").replace("👧", "👋").replace("👨", "👋").replace("👩", "👋").replace("👴", "👋").replace("👵", "👋");
-	eaterR.innerText = eaterR.innerText.replace("👦", "👋").replace("👧", "👋").replace("👨", "👋").replace("👩", "👋").replace("👴", "👋").replace("👵", "👋");
+food.addEventListener("click", function(e) {
+	for (var i = 0; i < eater.length; i ++) {
+		eater[i].innerText = original[i];
+	};
+	thermometer.style.filter = "saturate(100%)";
+	if (e.target.classList.contains("option")) {
+		for (var i = 0; i < eater.length; i ++) {
+			eater[i].innerText += e.target.innerText;
+		};
+		eaterInfo("😋", 1500);
+		if (e.target == food.children[0]) {
+			thermometer.style.filter = "saturate(100%)";
+			eaterInfo("😉", 4000);
+		} else if (e.target == food.children[1]) {
+			thermometer.style.filter = "saturate(300%)";
+			eaterInfo("😳", 4000);
+		} else if (e.target == food.children[2]) {
+			thermometer.style.filter = "saturate(1000%)";
+			eaterInfo("😵", 4000);
+		};
+		setTimeout(function() {
+			indicator.style.opacity = "1";
+			indicator.innerText = "How so?\n(Open Console to see what happened)";
+		}, 5000);
+	};
+});
+
+function eaterInfo(emj, timer) {
+	setTimeout(function() {
+		for (var i = 0; i < eater.length; i ++) {
+			eater[i].innerText = emj;
+		};
+	}, timer);
 };
 
-function eat() {
-	setTimeout(function() {
-		table.innerText = table.innerText.split("🤷").join("🍴🍴");
-	}, 20000);
+indicator.addEventListener("click", function() {
+	if (indicator.innerText == "How so?\n(Open Console to see what happened)") {
+		if (thermometer.style.filter == "saturate(100%)") {
+			demoSalad(31);
+		} else if (thermometer.style.filter == "saturate(300%)") {
+			demoPoultry(31);
+		} else if (thermometer.style.filter == "saturate(700%)") {
+			demoBeef(31);
+		};
+	};
+});
+
+function demoSalad(num) {
+	step(num, "🌎", "🌱", "🌱", 
+		"Plant your vegetables!", 500);
+	
+	step(num, "😍", "🥕", "🌽", 
+		"Harvest time!", 4000);
+
+	step(num, "😊", "🌱", "🌱", 
+		"Next round!", 7000);
 };
 
-function imFull() {
-	setTimeout(function() {
-		table.innerText = table.innerText.split("🍔").join("🍽").split("🍴🍴").join("  ");
-		eaterL.innerText = eaterL.innerText.split("👋").join("😋");
-		eaterR.innerText = eaterR.innerText.split("👋").join("😋");
-	}, 25000);	
+function demoPoultry(num) {
+	step(num, "🌎", "🥚", "🌱", 
+		"Chicken are being hatched!", 500);
+	
+	step(num, "🤗", "🐣", "🌱", 
+		"Welcome to the world!", 3000);
+	
+	step(num, "😎", "🐓", "🍃", 
+		"Chicken: We are ready!", 6000);
+	
+	step(num, "😖", "🏭", "💨", 
+		"Processing...", 9000);
+
+	step(num, "😞", "🍗", "💨", 
+		"Enjoy.", 13000);
 };
 
-function cleanUp(line) {
+function demoBeef(num) {
+	step(num, "🌎", "🐮", "🌱", 
+		"Cute baby cattles!", 500);
+	
+	step(num, "😁", "🐂", "🌱", 
+		"Hooray! Grown-ups!", 3000);
+	
+	step(num, "😧", "🐂", "💨", 
+		"Cattle: Gotta expel this...", 6000);
+	
+	step(num, "😖", "🏭", "💨", 
+		"Cattle: See you later!", 9000);
+
+	step(num, "🤢", "💨", "💨", 
+		"That's sick.", 13000);
+};
+
+function step(num, emj1, emj2, emj3, line, timer) {
 	setTimeout(function() {
-		table.innerText = "";
-		button.innerText = line;
-		eaterL.innerText = eaterInfo;
-		eaterR.innerText = eaterInfo;
-	}, 30000);
-}
+		output(num, emj1, emj2, emj3);
+		console.log(line);
+	}, timer);
+};
 
 function output(num, emj1, emj2, emj3) {
 	var output = "";
@@ -118,50 +170,4 @@ function output(num, emj1, emj2, emj3) {
 	};
 
 	console.log(output);
-};
-
-function demo(num, dvd) {
-	setTimeout(function() {
-		output(num, emoji.earth, emoji.grass, emoji.grass);
-		console.log("Hmm.. I think I need some meat..");
-	}, 500);
-	
-	setTimeout(function() {
-		output(num, emoji.flush, emoji.cow, emoji.grass);
-		console.log("Hooray!! Baby cattles!");
-	}, 3000);
-	
-	setTimeout(function() {
-		output(num, emoji.shock, emoji.ox, emoji.paw);
-		console.log("Finally, grown-ups!");
-	}, 6000);
-	
-	setTimeout(function() {
-		output(num, emoji.fear, emoji.ox, emoji.gas);
-		console.log("Cattle: I'm so sorry, but I've gotta expel this, otherwise I will just explode..");
-	}, 9000);
-	
-	setTimeout(function() {
-		output(num, emoji.mask, emoji.burger, emoji.gas);
-		setTimeout(function() {
-			for (var i = 1; i <= (num*num - 1) / 2; i ++) {
-				if (i % dvd) {
-					table.innerText += emoji.burger + "🤷";
-				} else {
-					table.innerText += emoji.burger + "\n";
-				}
-			};
-		}, 2000);
-		console.log("Beautiful!");
-	}, 15000);
-	
-	setTimeout(function() {
-		output(num, emoji.sick, emoji.waste, emoji.gas);
-		console.log("Thank you guys! So yummy! Oh, what about those methane? Hmm.. can we talk about it later?");
-	}, 25000);
-	
-	setTimeout(function() {
-		output(num, emoji.hot, emoji.fog, emoji.fog);
-		console.log("Well, seems to be a bit stuffy here..");
-	}, 30000);
 };

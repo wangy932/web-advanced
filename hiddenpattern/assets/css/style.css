@@ -17,29 +17,159 @@ html, body {
 p {
 	font-family: 'Ubuntu', sans-serif;
 	text-align: center;
+}
+
+#topic {
 	font-size: 20px;
-	line-height: 22px;
-}
-
-#eater_l {
-	width: 25%;
-	right: auto;
-	text-align: right;
-}
-
-#eater_r {
-	width: 25%;
-	left: auto;
-	text-align: left;
-}
-
-#table {
+	line-height: 24px;
 	width: 50%;
-}
-
-#button {
-	width: 50%;
+	top: -80%;
 	cursor: pointer;
+}
+
+#indicator {
+	font-size: 16px;
+	line-height: 20px;
+	width: 50%;
+	top: -33%;
+	opacity: 0;
+	cursor: pointer;
+}
+
+#note {
+	position: absolute;
+	font-size: 14px;
+	left: 35%;
+	bottom: 10%;
+}
+
+ul {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	list-style-type: none;
+}
+
+#food {
+	top: -10%;
+}
+
+.option {
+	display: inline-block;
+	width: 33.3%;
+	height: 20%;
+	font-size: 35px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.option:hover {
+	font-size: 50px;
+}
+
+#earth {
+	width: 40%;
+	height: 40%;
+	bottom: -20%;
+}
+
+#globe {
+	width: 90%;
+	font-size: 120px;
+	text-align: center;
+}
+
+#thermometer {
+	font-size: 80px;
+	transform: rotate(60deg);
+	top: -50%;
+	left: 46%;
+	transition: all 5s;
+}
+
+#people {
+	width: 100%;
+	height: 100%;
+}
+
+.eater {
+	width: 50%;
+	font-size: 20px;
+	text-align: center;
+}
+
+#e1 {
+	top: -70%;
+}
+
+#e2 {
+	top: -63%;
+	left: -27%;
+}
+
+#e3 {
+	top: -48%;
+	left: -48%;
+}
+
+#e4 {
+	top: -27%;
+	left: -60%;
+}
+
+#e5 {
+	top: -1%;
+	left: -65%;
+}
+
+#e6 {
+	top: 24%;
+	left: -60%;
+}
+
+#e7 {
+	top: 45%;
+	left: -48%;
+}
+
+#e8 {
+	top: 60%;
+	left: -30%;
+}
+
+#e9 {
+	top: 65%;
+	left: -5%;
+}
+
+#e10 {
+	top: 59%;
+	left: 22%;
+}
+
+#e11 {
+	top: 45%;
+	left: 45%;
+}
+
+#e12 {
+	top: 23%;
+	left: 54%;
+}
+
+#e13 {
+	top: -6%;
+	left: 57%;
+}
+
+#e14 {
+	top: -34%;
+	left: 53%;
+}
+
+#e15 {
+	top: -58%;
+	left: 40%;
 }
 
 .center {
