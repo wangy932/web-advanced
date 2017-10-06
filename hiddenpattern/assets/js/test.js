@@ -2,6 +2,7 @@ var food = document.getElementById("food");
 	indicator = document.getElementById("indicator");
 	thermometer = document.getElementById("thermometer");
 	eater = document.getElementsByClassName("eater");
+	background = document.getElementById("background");
 	original = [];
 	for (var i = 0; i < eater.length; i ++) {
 		original[i] = eater[i].innerText;	
@@ -11,22 +12,36 @@ food.addEventListener("mouseover", function(e) {
 	if (e.target.classList.contains("option")) {
 		indicator.style.opacity = "1";
 		if (e.target == food.children[0]) {
-			indicator.innerText = "Salad";
+			indicate("Salad", "🥗");
 		} else if (e.target == food.children[1]) {
-			indicator.innerText = "Poultry";
+			indicate("Poultry", "🍗");
 		} else if (e.target == food.children[2]) {
-			indicator.innerText = "Beef";
+			indicate("Beef", "🍔");
 		};
 	};
 });
 
+function indicate(line, emj) {
+	indicator.innerText = line;
+	for (var i = 0; i < 100 + Math.floor(Math.random()*500); i ++) {
+		var div = document.createElement("div");
+		div.classList.add("random");
+		div.style.top = - Math.random()*500 + "px";
+		div.style.left = Math.random()*1200 + "px";
+		div.innerText = emj;
+		background.appendChild(div);
+	};
+};
+
 food.addEventListener("mouseout", function(e) {
 	if (e.target.classList.contains("option")) {
 		indicator.style.opacity = "0";
+		background.innerHTML = "";
 	};
 });
 
 food.addEventListener("click", function(e) {
+	background.innerHTML = "";
 	for (var i = 0; i < eater.length; i ++) {
 		eater[i].innerText = original[i];
 	};
@@ -80,8 +95,14 @@ function demoSalad(num) {
 	step(num, "😍", "🥕", "🌽", 
 		"Harvest time!", 4000);
 
+	step(num, "😇", "🥒", "🍅", 
+		"More! I'm voracious!", 7000);
+
+	step(num, "😚", "🍓", "🍏", 
+		"Forgot fruits!", 10000);
+
 	step(num, "😊", "🌱", "🌱", 
-		"Next round!", 7000);
+		"Next round!", 15000);
 };
 
 function demoPoultry(num) {
@@ -89,16 +110,16 @@ function demoPoultry(num) {
 		"Chicken are being hatched!", 500);
 	
 	step(num, "🤗", "🐣", "🌱", 
-		"Welcome to the world!", 3000);
+		"Welcome to the world!", 4000);
 	
 	step(num, "😎", "🐓", "🍃", 
-		"Chicken: We are ready!", 6000);
+		"Chicken: We are ready!", 7000);
 	
 	step(num, "😖", "🏭", "💨", 
-		"Processing...", 9000);
+		"Processing...", 10000);
 
 	step(num, "😞", "🍗", "💨", 
-		"Enjoy.", 13000);
+		"Enjoy.", 15000);
 };
 
 function demoBeef(num) {
@@ -106,16 +127,16 @@ function demoBeef(num) {
 		"Cute baby cattles!", 500);
 	
 	step(num, "😁", "🐂", "🌱", 
-		"Hooray! Grown-ups!", 3000);
+		"Hooray! Grown-ups!", 4000);
 	
 	step(num, "😧", "🐂", "💨", 
-		"Cattle: Gotta expel this...", 6000);
+		"Cattle: Gotta expel this...", 7000);
 	
 	step(num, "😖", "🏭", "💨", 
-		"Cattle: See you later!", 9000);
+		"Cattle: See you later!", 10000);
 
 	step(num, "🤢", "💨", "💨", 
-		"That's sick.", 13000);
+		"That's sick.", 15000);
 };
 
 function step(num, emj1, emj2, emj3, line, timer) {
