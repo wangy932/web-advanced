@@ -1,25 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="de-DE">
 	<head>
-		<title>RflEttÜAÜG</title>
-		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="assets/js/js.cookie.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Heebo:400,700"  rel="stylesheet">
 	</head>
 
 	<body>
-		<span class="center">Rindfleisch etikettierung s überwachung s aufgaben übertragung s gesetz</span>s
-
-		<main id="ep">
-			<section class="karte">
-				<h1></h1>
-				<p></p>
-			</section>
+		<!-- foreground -->
+		<main id="foreground" class="center">
+			<div id="container">
+				<span>Rindfleischetikettierungsuberwachungsaufgabenubertragungsgesetz</span>
+			</div>
 		</main>
 
-		<main id="bg"></main>
+		<!-- translation -->
+		<main id="translation">
+			<section id="explain" class="center"></section>
+			<input id="input" type="text" name="answer" placeholder="translation">
+		</main>
 
-		<script type="text/javascript" src="assets/js/main.js"></script>
+		<!-- counter -->
+		<main id="counter">
+			<div id="number-v" class="number">0</div>
+			<div id="note-v" class="note">viewed</div>
+			<div id="number-l" class="number">0</div>
+			<div id="note-l" class="note">learned</div>
+		</main>
+
+		<!-- background -->
+		<main id="background"></main>
+
+		<!-- scripts -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js.cookie.js"></script>
+		<script type="text/javascript" src="browserSwipe.js"></script>
+		<script type="text/javascript" src="main.js"></script>
 	</body>
 </html>
