@@ -1,0 +1,92 @@
+* {
+	box-sizing: border-box;
+	font-size: 0;
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	text-align: center;
+	cursor: default;
+	user-select: none;
+	transition: all 0.5s;
+}
+
+span {
+	bottom: 5vh;
+	text-align: bottom;
+}
+
+div {
+	display: inline-block;
+}
+
+span div {
+	font-size: 20px;
+}
+
+.karte {
+	position: absolute;
+	top: 30vh;
+	width: 30vh;
+	height: 15vh;
+	background-color: rgba(0, 0, 0, 1);
+	z-index: 1;
+}
+
+h1, p {
+	position: absolute;
+	left: 5%;
+	color: white;
+	font-weight: 400;
+}
+
+h1 div, p div {
+	color: white;
+	font-weight: 400;
+}
+
+h1 {
+	top: 5%;
+	font-size: 30px;
+}
+
+h1 div {
+	font-size: 30px;
+}
+
+p {
+	top: 60%;
+	font-size: 20px;
+}
+
+p div {
+	font-size: 20px;
+}
+
+#bg div {
+	position: absolute;
+	font-size: 20px;
+	opacity: 0.5;
+	filter: blur(5px);
+	z-index: 0;
+}
+
+#bg div.active {
+	opacity: 0.8;
+	filter: blur(0);
+}
+
+.focus {
+	font-size: 30px;
+}
+
+.connect {
+	color: lightblue;
+}
+
+.center {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
