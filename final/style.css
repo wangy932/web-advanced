@@ -1,6 +1,74 @@
-#shape {
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+	font-family: 'Fjalla One', sans-serif;
+	font-weight: lighter;
+	text-align: center;
+	cursor: default;
+	user-select: none;
+	transition: all 0.5s;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+body {
+	background-color: white;
+}
+
+#input, #shape, div {
+	display: inline-block;
+	height: 80px;
+	font-size: 66px;
+	line-height: 80px;
+}
+
+#input, #shape {
 	position: absolute;
-	background-color: black;
-	min-height: 1px;
-	min-width: 1px;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: 100vw;
+	color: lightpink;
+	background-color: transparent;
+}
+
+#input {
+	border: none;
+	outline: none;
+	z-index: 1;
+}
+
+::placeholder {
+	color: lightblue;
+}
+
+#input::selection {
+	color: white;
+	background: lightpink;
+}
+
+#shape {
+	z-index: 0;
+}
+
+div {
+	width: auto;
+	transform: translateY(0);
+}
+
+#def {
+	display: block;
+	position: absolute;
+	width: 60vw;
+	height: 10vh;
+	font-size: 20px;
+	line-height: 24px;
+	text-align: left;
+	overflow: auto;
 }
