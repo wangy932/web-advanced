@@ -3,7 +3,7 @@
 	margin: 0;
 	padding: 0;
 	font-size: 0;
-	font-family: 'Fjalla One', sans-serif;
+	font-family: 'Covered By Your Grace', cursive;
 	font-weight: lighter;
 	text-align: center;
 	cursor: default;
@@ -21,20 +21,19 @@ body {
 
 #input, #shape, div {
 	display: inline-block;
-	height: 80px;
-	font-size: 66px;
-	line-height: 80px;
+	height: 180px;
+	font-size: 120px;
+	line-height: 180px;
 }
 
 #input, #shape {
 	position: absolute;
-	left: 0;
-	right: 0;
+	right: 25vw;
 	top: 0;
 	bottom: 0;
 	margin: auto;
 	width: 100vw;
-	color: lightpink;
+	color: MediumAquaMarine;
 	background-color: transparent;
 }
 
@@ -45,12 +44,12 @@ body {
 }
 
 ::placeholder {
-	color: lightblue;
+	color: HoneyDew;
 }
 
 #input::selection {
 	color: white;
-	background: lightpink;
+	background: MediumAquaMarine;
 }
 
 #shape {
@@ -60,15 +59,28 @@ body {
 div {
 	width: auto;
 	transform: translateY(0);
+	transition-property: transform;
+	transition-duration: 0.5s;
 }
 
 #def {
 	display: block;
 	position: absolute;
+	left: 35vw;
+	top: 15vh;
 	width: 60vw;
-	height: 10vh;
-	font-size: 20px;
-	line-height: 24px;
+	height: 20vh;
+	font-size: 22px;
+	font-family: 'Caveat', cursive;
+	font-weight: normal;
+	color: black;
+	line-height: 26px;
 	text-align: left;
 	overflow: auto;
+	z-index: 0;
+	opacity: 0.1;
+}
+
+#def:hover {
+	opacity: 0.7;
 }
