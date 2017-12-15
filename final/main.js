@@ -4,7 +4,15 @@ var audio = document.getElementById("audio");
     input = document.getElementById("input");
 	shape = document.getElementById("shape");
 	def = document.getElementById("def");
+	intro = document.getElementById("intro");
+	bar = document.getElementById("bar");
+	defHis = new Object();
 var source, stressPos, stressPosInWord, a, b;
+
+input.addEventListener("focus", function() {
+    intro.style.display = "none";
+    def.innerHTML = "";
+});
 
 input.addEventListener("keypress", function(e) {
 	if (e.keyCode == 13) {
@@ -32,6 +40,10 @@ function getSource(xml) {
         shape.style.display = "inline-block";
         shape.innerHTML = new XMLSerializer().serializeToString(xmlDoc.getElementsByTagName("ew")[0]).replace(/<.*?>/g, "");
         input.value = shape.innerHTML;
+        if (!bar.innerHTML.includes(input.value)) {
+            bar.innerHTML += "<span class=history>" + input.value + "</span>";
+            bar.scrollLeft = 0;
+        };
         
         //getSound
     	var xmlSound = new XMLSerializer().serializeToString(xmlDoc.getElementsByTagName("sound")[0].childNodes[0].childNodes[0]);
@@ -40,6 +52,7 @@ function getSource(xml) {
     	    source = "https://media.merriam-webster.com/soundc11/f/" + xmlSound;
     	};
     	//console.log(xmlDoc.getElementsByTagName("sound"));
+    	//console.log(source);
     	audio.src = source;
 		audio.play();
     	
@@ -73,9 +86,26 @@ function getSource(xml) {
             xmlDef = xmlDef.replace(/ \d /g, "<br>$&").replace(/  :/g, " :").replace(/  /g, "$&<br>&nbsp;&nbsp;&nbsp;");
             def.innerHTML = def.innerHTML + xmlDef + "<br>";
             //console.log(xmlDoc.getElementsByTagName("def")[i].innerHTML);
+            defHis[input.value] = def.innerHTML;
         };
     } else {
-    	alert("C'est pas l'anglais!");
+        input.value = "English?"
+        input.focus();
+        input.select();
+        audio.src = "https://media.merriam-webster.com/soundc11/c/can_t002.wav";
+		audio.play();
+		setTimeout(function() {
+            audio.src = "https://media.merriam-webster.com/soundc11/f/find0001.wav";
+    		audio.play();
+		}, 600);
+		setTimeout(function() {
+            audio.src = "https://media.merriam-webster.com/soundc11/t/this0001.wav";
+    		audio.play();
+		}, 1200);
+		setTimeout(function() {
+            audio.src = "https://media.merriam-webster.com/soundc11/w/word0001.wav";
+    		audio.play();
+		}, 1800);
     };
 };
 
@@ -96,4 +126,12 @@ shape.addEventListener("click", function() {
     input.focus();
     input.select();
     shape.style.display = "none";
+});
+
+bar.addEventListener("click", function(e) {
+   if (e.target.classList.contains("history")) {
+        xhttp.open("GET", "https://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + e.target.innerText + "?key=14e3fcf0-6d29-49e9-b7e9-30db51280e47", true);
+	    xhttp.send();
+	    def.innerHTML = defHis[e.target.innerText];
+   }; 
 });
