@@ -10,7 +10,6 @@ var audio = document.getElementById("audio");
 var source, stressPos, stressPosInWord, a, b;
 
 input.addEventListener("focus", function() {
-    intro.style.display = "none";
     def.innerHTML = "";
 });
 
