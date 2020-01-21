@@ -51,18 +51,13 @@ function getSource(xml) {
     	if (xmlSound.slice(0, 2) == "fw") {
     	    source = "https://media.merriam-webster.com/soundc11/f/" + xmlSound;
     	};
-    	//console.log(xmlDoc.getElementsByTagName("sound"));
-    	//console.log(source);
     	audio.src = source;
 		audio.play();
     	
     	//getPr
     	var xmlPr = new XMLSerializer().serializeToString(xmlDoc.getElementsByTagName("pr")[0]).slice(4, -5);
-    	//console.log(xmlDoc.getElementsByTagName("pr"));--bug:incomplete phonetic transcription
     	stressPos = (convertToHex(xmlPr).indexOf("02c8")/4) / (convertToHex(xmlPr).length/4);
         stressPosInWord = stressPos * input.value.length;
-        //console.log(stressPos);
-        //console.log(stressPosInWord);
         a = (Math.PI/2) / (input.value.length - stressPosInWord);
         b = Math.PI - a*input.value.length;
         
@@ -85,11 +80,10 @@ function getSource(xml) {
             xmlDef = xmlDef.replace(/<.*?>/g, "");
             xmlDef = xmlDef.replace(/ \d /g, "<br>$&").replace(/  :/g, " :").replace(/  /g, "$&<br>&nbsp;&nbsp;&nbsp;");
             def.innerHTML = def.innerHTML + xmlDef + "<br>";
-            //console.log(xmlDoc.getElementsByTagName("def")[i].innerHTML);
             defHis[input.value] = def.innerHTML;
         };
     } else {
-        input.value = "English?"
+        input.value = "Can't find this word"
         input.focus();
         input.select();
         audio.src = "https://media.merriam-webster.com/soundc11/c/can_t002.wav";
