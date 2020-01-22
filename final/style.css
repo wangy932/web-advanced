@@ -21,9 +21,9 @@ body {
 
 #input, #shape, div {
 	display: inline-block;
-	height: 220px;
-	font-size: 170px;
-	line-height: 200px;
+	height: 24vh;
+	font-size: 15vh;
+	line-height: 15vh;
 	letter-spacing: -2px;
 }
 
@@ -35,7 +35,7 @@ body {
 	bottom: 0;
 	margin: auto;
 	margin-left: 30px;
-	width: 100vw;
+	width: calc(100vw - 30px);
 	background-color: transparent;
 }
 
@@ -66,15 +66,15 @@ body {
 }
 
 .line.top {
-	top: calc(50% - 110px);
+	top: 38vh;
 }
 
 .line.mid {
-	top: 50%;
+	top: 50vh;
 }
 
 .line.btm {
-	top: calc(50% + 110px);
+	top: 62vh;
 }
 
 #shape {
@@ -89,17 +89,28 @@ div {
 	transition-duration: 0.5s;
 }
 
+#label {
+	display: block;
+	position: absolute;
+	left: 30px;
+	top: 13vh;
+	width: calc(100vw - 30px);
+	font-size: 7vh;
+	font-family: 'Cormorant Garamond', serif;
+	font-weight: 300;
+}
+
 #def {
 	display: block;
 	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100vw;
-	height: 100vh;
-	font-size: 200px;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 900;
-	line-height: 200px;
+	left: 30px;
+	top: 62vh;
+	width: calc(100vw - 30px);
+	height: calc(35vh - 35px);
+	font-size: 5vh;
+	font-family: 'Cormorant Garamond', serif;
+	font-weight: 700;
+	line-height: 6vh;
 	overflow: scroll;
 	z-index: 0;
 	opacity: 0.1;
@@ -127,11 +138,20 @@ h1 {
 	z-index: 0;
 }
 
+#title {
+	position: absolute;
+	top: 5vh;
+	width: 100vw;
+	font-size: 2.5vh;
+	text-align: center;
+	opacity: 1;
+	z-index: -1;
+}
+
 #bar {
 	position: absolute;
-	bottom: 2vh;
+	bottom: 3vh;
 	width: 100vw;
-	height: 5vh;
 	overflow-y: scroll;
 	direction:rtl;
 	white-space: nowrap;
