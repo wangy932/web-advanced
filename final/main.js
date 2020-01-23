@@ -7,10 +7,12 @@ var audio = document.getElementById("audio");
 	def = document.getElementById("def");
 	intro = document.getElementById("intro");
 	bar = document.getElementById("bar");
+    flAll = new Array();
 	defHis = new Object();
 var source, stressPos, stressPosInWord, a, b;
 
 input.addEventListener("focus", function() {
+    flAll = [];
     label.innerHTML = "";
     def.innerHTML = "";
 });
@@ -46,7 +48,7 @@ function getSource(xml) {
             bar.scrollLeft = 0;
         };
 
-        console.log(xmlDoc);
+        //console.log(xmlDoc);
         
         //getSound
     	var xmlSound = new XMLSerializer().serializeToString(xmlDoc.getElementsByTagName("sound")[0].childNodes[0].childNodes[0]);
@@ -79,10 +81,10 @@ function getSource(xml) {
         //var xmlFl = xmlDoc.getElementsByTagName("fl")[0].innerHTML;
         for (var i = 0; i < xmlDoc.getElementsByTagName("ew").length; i ++) {
             if (xmlDoc.getElementsByTagName("ew")[i].innerHTML == input.value) {
-                //getLabel
+                //getLabelInfo
                 if (xmlDoc.getElementsByTagName("entry")[i].getElementsByTagName("fl")[0]) {
                     var xmlLabel = xmlDoc.getElementsByTagName("entry")[i].getElementsByTagName("fl")[0].innerHTML;
-                    label.innerHTML = label.innerHTML + xmlLabel + " | ";
+                    flAll.push(xmlLabel);
                 };
                 
                 //getDef
@@ -96,6 +98,21 @@ function getSource(xml) {
                     defHis[input.value] = def.innerHTML;
                 };
             };
+        };
+
+        //selectLabel
+        for (var j = flAll.length - 1; j >= 0 ; j --) {
+            for (var k = flAll.length - 1; k >= 0 ; k --) {
+                if (k != j) {
+                    if (flAll[k] == flAll[j]) {
+                        flAll.splice(j, 1);
+                    };
+                };
+            };
+        };
+
+        for (var j = 0; j < flAll.length; j ++) {
+            label.innerHTML = label.innerHTML + flAll[j] + " | ";
         };
 
         label.innerHTML = label.innerHTML.slice(0, -3);
