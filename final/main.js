@@ -160,6 +160,7 @@ bar.addEventListener("click", function(e) {
    if (e.target.classList.contains("history")) {
         xhttp.open("GET", "https://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + e.target.innerText + "?key=14e3fcf0-6d29-49e9-b7e9-30db51280e47", true);
 	    xhttp.send();
+	flAll = [];
         label.innerHTML = "";
         def.innerHTML = "";
    }; 
